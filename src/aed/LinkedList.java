@@ -47,11 +47,16 @@ public class LinkedList implements List{
 			throw new IllegalArgumentException("Invalid Index");
 		}
 		Node newNode = new Node(element);
-		if(index == 0) {
+		if(index == 0 && this.size == 0) {
+			newNode.setNext(head);
+			this.head = newNode;
+			this.tail = newNode;
+			this.size++;
+		} else if (index == 0) {
 			newNode.setNext(head);
 			this.head = newNode;
 			this.size++;
-		} else if(index == this.size) {
+		}else if(index == this.size) {
 			this.add(element);
 		} else {
 			Node previous = this.getInternal(index - 1);
